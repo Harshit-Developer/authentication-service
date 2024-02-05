@@ -5,10 +5,10 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class UserDto {
+public class AuthRegisterSuccessResponse {
 
-	private String firstName;
+	private String message;
 	private String email;
+	private String firstName;
 	private String lastName;
-	private String role;
 }

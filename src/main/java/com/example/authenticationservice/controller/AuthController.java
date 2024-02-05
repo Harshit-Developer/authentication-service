@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.authenticationservice.entities.AuthLoginRequest;
-import com.example.authenticationservice.entities.AuthResponse;
 import com.example.authenticationservice.entities.RegisterAuthRequest;
 import com.example.authenticationservice.services.AuthService;
 
@@ -28,28 +27,22 @@ public class AuthController {
 	
 	
 	@PostMapping(value = "/login")
-	public ResponseEntity<AuthResponse> login(@RequestBody AuthLoginRequest request) {
+	public ResponseEntity<?> login(@RequestBody AuthLoginRequest request) {
 		
+		logger.info("Request recieved by AuthController/login");
 		return ResponseEntity.ok(authService.login(request));
 		
 	}
 	
 	@PostMapping(value = "/register")
-	public ResponseEntity<String> register(@RequestBody RegisterAuthRequest request) {
+	public ResponseEntity<?> register(@RequestBody RegisterAuthRequest request) {
 		
-		logger.info("Inside Auth/Register/POST");
-		ResponseEntity<String> registerUserResponse = authService.register(request);
+		logger.info("Request recieved by AuthController/SignUp");
+		ResponseEntity<?> registerUserResponse = authService.register(request);
 		return registerUserResponse;
 		
 	}
 	
-	@GetMapping(value = "/register")
-	public ResponseEntity<String> register() {
-		
-		logger.info("Inside Auth/User/Register");
-//		return ResponseEntity.ok(authService.login(request));
-		return ResponseEntity.ok("In auth request");
-	}
 }
 
 

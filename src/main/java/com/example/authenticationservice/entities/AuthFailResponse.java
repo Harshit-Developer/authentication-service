@@ -5,10 +5,8 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class UserDto {
+public class AuthFailResponse {
 
-	private String firstName;
-	private String email;
-	private String lastName;
-	private String role;
+	private String error;
+	private String message;
 }

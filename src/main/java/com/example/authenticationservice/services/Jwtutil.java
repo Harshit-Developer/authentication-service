@@ -34,8 +34,8 @@ public class Jwtutil {
         return getClaims(token).getExpiration();
     }
 
-    public String generate(String userId, String role, String tokenType) {
-        Map<String, String> claims = Map.of("id", userId, "role", role);
+    public String generate(String email, String role, String tokenType) {
+        Map<String, String> claims = Map.of("email", email, "role", role);
         long expMillis = "ACCESS".equalsIgnoreCase(tokenType)
                 ? Long.parseLong(expiration) * 1000
                 : Long.parseLong(expiration) * 1000 * 5;
